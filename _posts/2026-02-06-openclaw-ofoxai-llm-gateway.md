@@ -101,14 +101,14 @@ client = Anthropic(
 
 # 用 Claude Opus
 response = client.messages.create(
-    model="anthropic/claude-opus-4-5",
+    model="anthropic/claude-opus-4.5",
     max_tokens=4096,
     messages=[{"role": "user", "content": "Hello!"}]
 )
 
 # 切换到 Sonnet，只改一个参数
 response = client.messages.create(
-    model="anthropic/claude-sonnet-4-5",
+    model="anthropic/claude-sonnet-4.5",
     max_tokens=4096,
     messages=[{"role": "user", "content": "Hello!"}]
 )
@@ -138,7 +138,7 @@ curl https://api.ofox.ai/anthropic/v1/messages \
   -H "x-api-key: $OFOXAI_API_KEY" \
   -H "anthropic-version: 2023-06-01" \
   -H "Content-Type: application/json" \
-  -d '{"model": "anthropic/claude-sonnet-4-5", "max_tokens": 1024, "messages": [{"role": "user", "content": "Hi"}]}'
+  -d '{"model": "anthropic/claude-sonnet-4.5", "max_tokens": 1024, "messages": [{"role": "user", "content": "Hi"}]}'
 ```
 
 **4. 统一计费，更便宜**
@@ -177,7 +177,7 @@ curl https://api.ofox.ai/anthropic/v1/messages \
   agents: {
     defaults: {
       model: {
-        primary: "ofoxai/anthropic/claude-opus-4-5"
+        primary: "ofoxai/anthropic/claude-opus-4.5"
       }
     }
   }
@@ -202,8 +202,8 @@ OfoxAI 支持的模型命名格式是 `<provider>/<model>`：
 |------|-------------|
 | GPT-4 Turbo | `openai/gpt-4-turbo` |
 | GPT-4o | `openai/gpt-4o` |
-| Claude Opus 4.5 | `anthropic/claude-opus-4-5` |
-| Claude Sonnet 4.5 | `anthropic/claude-sonnet-4-5` |
+| Claude Opus 4.5 | `anthropic/claude-opus-4.5` |
+| Claude Sonnet 4.5 | `anthropic/claude-sonnet-4.5` |
 | Gemini 2.0 Flash | `google/gemini-2.0-flash` |
 | DeepSeek V3 | `deepseek/deepseek-chat` |
 
@@ -214,8 +214,8 @@ OfoxAI 支持的模型命名格式是 `<provider>/<model>`：
   agents: {
     defaults: {
       model: {
-        primary: "ofoxai/anthropic/claude-opus-4-5",
-        fast: "ofoxai/anthropic/claude-haiku-3-5"
+        primary: "ofoxai/anthropic/claude-opus-4.5",
+        fast: "ofoxai/anthropic/claude-sonnet-4.5"
       }
     }
   }
@@ -239,7 +239,7 @@ OfoxAI 支持的模型命名格式是 `<provider>/<model>`：
 openclaw chat --model ofoxai/openai/gpt-4o
 
 # 不行，换 Claude
-openclaw chat --model ofoxai/anthropic/claude-opus-4-5
+openclaw chat --model ofoxai/anthropic/claude-opus-4.5
 
 # 想省钱，用 DeepSeek
 openclaw chat --model ofoxai/deepseek/deepseek-chat
