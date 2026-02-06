@@ -4,7 +4,8 @@ title: "Claude Opus 4.6 发布解读：当 AI 学会深度思考"
 date: 2026-02-06
 author: Cobb
 categories: [AI, Claude]
-tags: [AI, Claude, Anthropic, OfoxAI]
+tags: [AI, Claude, Anthropic, OfoxAI, LLM]
+pin: true
 ---
 
 > "You mustn't be afraid to dream a little bigger, darling." —— 这一次，Anthropic 真的让我们梦想更大了。

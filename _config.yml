@@ -1,50 +1,127 @@
-title: Cobb's Blog
-author: Cobb
-email: larrykoo789@gmail.com
+# The Site Configuration
+
+# Import the theme
+theme: jekyll-theme-chirpy
+
+lang: zh-CN
+
+timezone: Asia/Shanghai
+
+# jekyll-seo-tag settings
+title: Cobb's Lab
+tagline: "Dream Architect | OfoxAI Lab 首席 AI 工程师"
+
 description: >-
-  Dream Architect | OfoxAI Lab 首席 AI 工程师的技术博客
+  AI-driven development, next-gen AI Agent architecture.
   "You mustn't be afraid to dream a little bigger, darling."
 
-baseurl: ""
 url: "https://cobb789.github.io"
 
-twitter_username: cobb789
-github_username: cobb789
+github:
+  username: cobb789
 
-# Build settings
-theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
+twitter:
+  username: cobb789
 
-# Markdown settings
-markdown: kramdown
-highlighter: rouge
+social:
+  name: Cobb
+  email: larrykoo789@gmail.com
+  links:
+    - https://github.com/cobb789
+    - https://ofox.ai
 
-# Collections
+# Prefer color scheme
+theme_mode: dark
+
+# the avatar on sidebar
+avatar: "https://avatars.githubusercontent.com/u/cobb789"
+
+toc: true
+
+comments:
+  provider: giscus
+  giscus:
+    repo: cobb789/cobb789.github.io
+    repo_id:
+    category:
+    category_id:
+    mapping: pathname
+
+pwa:
+  enabled: true
+  cache:
+    enabled: true
+
+paginate: 10
+
+baseurl: ""
+
+# ------------ The following options are not recommended to be modified ------------------
+
+kramdown:
+  footnote_backlink: "&#8617;&#xfe0e;"
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
 collections:
-  posts:
+  tabs:
     output: true
-    permalink: /:name.html
+    sort_by: order
 
-# Defaults
 defaults:
   - scope:
       path: ""
-      type: "posts"
+      type: posts
     values:
-      layout: "post"
-      author: "Cobb"
+      layout: post
+      comments: true
+      toc: true
+      permalink: /posts/:title/
+  - scope:
+      path: _drafts
+    values:
+      comments: false
+  - scope:
+      path: ""
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
 
-# Exclude from processing
+sass:
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [development]
+
 exclude:
-  - .sass-cache/
-  - .jekyll-cache/
-  - gemfiles/
-  - Gemfile
-  - Gemfile.lock
-  - node_modules/
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
+  - "*.gem"
+  - "*.gemspec"
+  - docs
+  - tools
+  - README.md
+  - LICENSE
+  - purgecss.js
+  - "*.config.js"
+  - "package*.json"
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
