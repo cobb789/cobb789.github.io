@@ -95,7 +95,7 @@ OfoxAI 同时支持 **Anthropic 原生协议** 和 OpenAI 兼容协议。推荐�
 from anthropic import Anthropic
 
 client = Anthropic(
-    base_url="https://api.ofox.ai",
+    base_url="https://api.ofox.ai/anthropic",
     api_key="<YOUR_OFOXAI_KEY>"
 )
 
@@ -134,7 +134,7 @@ response = client.messages.create(
 # export HTTPS_PROXY=...
 
 # 直接调（Anthropic 协议）
-curl https://api.ofox.ai/v1/messages \
+curl https://api.ofox.ai/anthropic/v1/messages \
   -H "x-api-key: $OFOXAI_API_KEY" \
   -H "anthropic-version: 2023-06-01" \
   -H "Content-Type: application/json" \
@@ -168,7 +168,7 @@ curl https://api.ofox.ai/v1/messages \
   providers: {
     ofoxai: {
       type: "anthropic",  // 推荐使用 Anthropic 原生协议
-      baseURL: "https://api.ofox.ai",
+      baseURL: "https://api.ofox.ai/anthropic",
       apiKeyEnv: "OFOXAI_API_KEY"
     }
   },
