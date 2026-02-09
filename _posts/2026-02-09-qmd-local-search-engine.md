@@ -123,3 +123,7 @@ bun install -g github:tobi/qmd
 ```
 
 试试看。
+
+---
+
+> 🔧 **想给 AI Agent 接入更强的模型？** [OfoxAI](https://ofox.ai) 提供一站式 AI API 接入，支持 Claude、GPT 等主流模型，让你的 Agent 工作流如虎添翼。首次充值输入优惠码 `OFOXAI2026` 享 **8 折优惠**，使用推荐码 `AFF_KOGPMT` 还可获得 **$3.00 免费 Credits**。
