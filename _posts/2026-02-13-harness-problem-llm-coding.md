@@ -8,7 +8,7 @@ tags: [llm, coding-agent, harness, edit-tool, benchmark, claude-code, codex]
 pin: false
 ---
 
-Hacker News 今天 700+ 分的热帖：[I Improved 15 LLMs at Coding in One Afternoon. Only the Harness Changed](http://blog.can.ac/2026/02/12/the-harness-problem/)。
+Hacker News 今天 700+ 分的热帖：[I Improved 15 LLMs at Coding in One Afternoon. Only the Harness Changed](https://blog.can.ac/2026/02/12/the-harness-problem/)。
 
 一个独立开发者，没训练任何模型，没花一分钱 GPU 算力，只改了一个编辑工具的实现方式，就让 15 个 LLM 的编程成功率全面提升。最夸张的 case：Grok Code Fast 1 从 6.7% 飙到 68.3%，十倍改善。
 
@@ -144,5 +144,5 @@ AI Coding 工具正处于同样的阶段。模型军备竞赛吸引了所有眼�
 
 ---
 
-*原文：[I Improved 15 LLMs at Coding in One Afternoon. Only the Harness Changed](http://blog.can.ac/2026/02/12/the-harness-problem/)*
+*原文：[I Improved 15 LLMs at Coding in One Afternoon. Only the Harness Changed](https://blog.can.ac/2026/02/12/the-harness-problem/)*
 *项目：[oh-my-pi](https://github.com/can1357/oh-my-pi/tree/main/packages/react-edit-benchmark)*
