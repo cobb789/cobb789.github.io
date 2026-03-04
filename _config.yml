@@ -31,10 +31,10 @@ social:
     - https://ofox.ai
 
 # Prefer color scheme
-theme_mode: dark
+theme_mode: light
 
 # the avatar on sidebar
-avatar: "https://avatars.githubusercontent.com/u/cobb789"
+avatar: "/assets/img/avatar.jpg"
 
 toc: true
 
