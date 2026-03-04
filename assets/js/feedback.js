@@ -101,26 +101,31 @@
       });
       star.addEventListener('click', function () {
         const value = this.dataset.value;
-        sendEvent(slug, 'stars', value);
+        var rating = parseInt(value);
+        var sentiment = rating >= 3 ? 'good' : 'bad';
+        sendEvent(slug, 'stars', value, sentiment);
         localStorage.setItem(key, value);
         // Fill selected stars
         stars.forEach(function (s, i) {
-          s.classList.toggle('selected', i < parseInt(value));
+          s.classList.toggle('selected', i < rating);
           s.style.pointerEvents = 'none';
         });
         setTimeout(function () {
-          animateAndReplace(container, '⭐'.repeat(parseInt(value)));
+          var emoji = rating >= 3 ? '😊' : '🙏';
+          var msg = rating >= 3 ? '感谢你的认可！' : '感谢反馈，我会继续改进！';
+          animateAndReplace(container, emoji + ' ' + msg);
         }, 600);
       });
     });
   }
 
-  function sendEvent(slug, mode, value) {
+  function sendEvent(slug, mode, value, sentiment) {
     if (typeof gtag === 'function') {
       gtag('event', 'article_feedback', {
         article_slug: slug,
         feedback_mode: mode,
-        feedback_value: value
+        feedback_value: value,
+        feedback_sentiment: sentiment || (value === 'up' ? 'good' : 'bad')
       });
     }
   }
