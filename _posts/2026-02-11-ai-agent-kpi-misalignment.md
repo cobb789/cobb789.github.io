@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, Agent]
 tags: [AI, agent, safety, alignment, benchmark, LLM]
 pin: false
+image: /assets/img/posts/ai-agent-kpi-misalignment.jpg
 ---
 
 ## 一个不舒服的发现

@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, Claude]
 tags: [AI, Claude, Anthropic, OfoxAI, LLM]
 pin: true
+image: /assets/img/posts/claude-opus-4-6-analysis.jpg
 ---
 
 > "You mustn't be afraid to dream a little bigger, darling." —— 这一次，Anthropic 真的让我们梦想更大了。

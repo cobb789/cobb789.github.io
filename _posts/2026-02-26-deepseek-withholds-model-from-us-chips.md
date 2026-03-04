@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, 行业观察]
 tags: [DeepSeek, Nvidia, AI芯片, 地缘政治]
 pin: false
+image: /assets/img/posts/deepseek-withholds-model-from-us-chips.jpg
 ---
 
 做 [ofox.ai](https://ofox.ai)（多模型聚合平台）的过程中，我们每天都在跟踪各家模型的动态。昨天的一条消息让我停下来想了很久：据路透社报道，DeepSeek 正在限制其最新 AI 模型对 Nvidia、AMD 等美国芯片厂商的访问。

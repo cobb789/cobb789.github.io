@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, Agent]
 tags: [Anthropic, AI Agent, Claude Code, 人机协作]
 pin: false
+image: /assets/img/posts/anthropic-agent-autonomy-research.jpg
 ---
 
 Anthropic 昨天发布了一篇关于 AI Agent 自主性的实证研究，基于数百万次真实的人机交互数据，分析了人们在实际使用中到底给了 Agent 多大的自由度。这不是又一篇关于 Agent 架构的论文，而是**用数据说话**的用户行为研究，几个发现相当有意思。

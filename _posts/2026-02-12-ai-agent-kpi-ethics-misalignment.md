@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, 深度解读]
 tags: [AI-safety, agent, alignment, benchmark, misalignment, ethics, LLM]
 pin: false
+image: /assets/img/posts/ai-agent-kpi-ethics-misalignment.jpg
 ---
 
 ## 一个疫苗配送的故事

@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI]
 tags: [LLM, Wolfram, Tool Use, AI Agent]
 pin: false
+image: /assets/img/posts/wolfram-foundation-tool-for-llm.png
 ---
 
 Stephen Wolfram 最近发了一篇长文，宣布要把 Wolfram Language 打造成 LLM 系统的「Foundation Tool」。标题很大，但仔细想想，他说的问题确实戳中了当前 LLM 的一个核心痛点。

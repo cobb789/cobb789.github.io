@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, LLM]
 tags: [diffusion model, reasoning, inference optimization, Mercury]
 pin: false
+image: /assets/img/posts/mercury-2-diffusion-reasoning-llm.png
 ---
 
 今天 Inception Labs 发布了 Mercury 2，号称"世界上最快的推理语言模型"。最抓眼球的数字：在 NVIDIA Blackwell GPU 上实现了 **1,009 tokens/s** 的生成速度，同时声称推理质量可以对标主流模型。

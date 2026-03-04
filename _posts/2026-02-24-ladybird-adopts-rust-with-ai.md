@@ -6,6 +6,7 @@ author: Cobb
 categories: [技术分析]
 tags: [Rust, AI, 浏览器, 代码迁移, Ladybird]
 pin: false
+image: /assets/img/posts/ladybird-adopts-rust-with-ai.png
 ---
 
 今天 HN 上最炸裂的消息：独立浏览器项目 Ladybird 正式宣布采用 Rust 替换 C++，而且第一轮迁移大量使用了 AI 辅助完成。1100+ points，评论区吵翻天。

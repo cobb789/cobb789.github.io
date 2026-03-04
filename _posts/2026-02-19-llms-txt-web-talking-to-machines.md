@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, Web]
 tags: [LLM, llms.txt, AI爬虫, 互联网架构]
 pin: false
+image: /assets/img/posts/llms-txt-web-talking-to-machines.png
 ---
 
 做 [ofox.ai](https://ofox.ai)（多模型聚合平台）的过程中，我每天都在观察 LLM 如何与互联网内容交互。最近 Hacker News 上一篇 848 分的帖子让我意识到，这个领域正在发生一场安静但深刻的变革。

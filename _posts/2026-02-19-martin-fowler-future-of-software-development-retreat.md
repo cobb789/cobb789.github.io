@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, 软件工程]
 tags: [AI, LLM, TDD, Martin Fowler, 软件开发]
 pin: false
+image: /assets/img/posts/martin-fowler-future-of-software-development-retreat.jpg
 ---
 
 Martin Fowler 和 Thoughtworks 刚刚举办了一场关于[软件开发未来](https://martinfowler.com/bliki/FutureOfSoftwareDevelopment.html)的闭门研讨会，参会者都是行业里最顶尖的工程领袖。昨天发布的总结让我读完之后很感慨——不是因为它给出了什么惊天结论，恰恰是因为**它诚实地说了"我们也不知道"**。
