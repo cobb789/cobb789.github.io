@@ -39,13 +39,7 @@ avatar: "/assets/img/avatar.jpg"
 toc: true
 
 comments:
-  provider: giscus
-  giscus:
-    repo: cobb789/cobb789.github.io
-    repo_id:
-    category:
-    category_id:
-    mapping: pathname
+  provider:
 
 pwa:
   enabled: true
