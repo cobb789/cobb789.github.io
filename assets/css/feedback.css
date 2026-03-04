@@ -1,0 +1,151 @@
+/* Article Feedback Widget - Lyket-inspired */
+.feedback-widget {
+  margin: 2.5rem 0 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.feedback-inner {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fafafa;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  min-width: 280px;
+}
+
+/* Dark mode support */
+[data-mode="dark"] .feedback-inner,
+html[data-mode="dark"] .feedback-inner {
+  background: #1e1e2e;
+  border-color: #374151;
+}
+
+.feedback-title {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 0 0 1rem;
+  font-weight: 500;
+}
+
+[data-mode="dark"] .feedback-title {
+  color: #9ca3af;
+}
+
+/* Updown buttons */
+.feedback-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.fb-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 24px;
+  background: white;
+  color: #374151;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+[data-mode="dark"] .fb-btn {
+  background: #2d2d3f;
+  border-color: #4b5563;
+  color: #d1d5db;
+}
+
+.fb-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.fb-btn:hover, .fb-btn.active {
+  transform: scale(1.05);
+}
+
+.fb-up:hover, .fb-up.active {
+  border-color: #10b981;
+  color: #10b981;
+  background: #ecfdf5;
+}
+
+[data-mode="dark"] .fb-up:hover,
+[data-mode="dark"] .fb-up.active {
+  background: #064e3b;
+}
+
+.fb-down:hover, .fb-down.active {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: #fef2f2;
+}
+
+[data-mode="dark"] .fb-down:hover,
+[data-mode="dark"] .fb-down.active {
+  background: #450a0a;
+}
+
+.fb-btn:active {
+  transform: scale(0.95);
+}
+
+/* Star rating */
+.feedback-stars {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.fb-star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #d1d5db;
+  transition: all 0.15s ease;
+}
+
+[data-mode="dark"] .fb-star {
+  color: #4b5563;
+}
+
+.fb-star:hover,
+.fb-star.hover {
+  color: #fbbf24;
+  transform: scale(1.15);
+}
+
+.fb-star.hover svg,
+.fb-star.selected svg {
+  fill: #fbbf24;
+  stroke: #f59e0b;
+}
+
+.fb-star.selected {
+  color: #fbbf24;
+  animation: starPop 0.3s ease;
+}
+
+@keyframes starPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* Thank you state */
+.feedback-thanks {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+[data-mode="dark"] .feedback-thanks {
+  color: #9ca3af;
+}
