@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, 观点]
 tags: [AI, 生产力, Solow悖论, LLM, 企业AI]
 pin: false
+image: /assets/img/posts/ai-productivity-paradox-solow-returns.jpg
 ---
 
 6000 位 CEO 刚刚承认了一个尴尬的事实：AI 并没有真正提升他们公司的生产力。

@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, Agent]
 tags: [AI Agent, RTS, LLM, 游戏AI]
 pin: false
+image: /assets/img/posts/ai-agents-play-rts-games.png
 ---
 
 昨天 Hacker News 上一个项目引起了我的注意：[LLM Skirmish](https://llmskirmish.com/)，一个让 AI Agent 对战的即时战略游戏，热度超过 200 分。

@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, Security]
 tags: [AI, Claude, MCP, security, prompt injection, agent, Anthropic]
 pin: false
+image: /assets/img/posts/claude-dxt-mcp-rce-calendar-attack.png
 ---
 
 今天安全公司 LayerX 公开了一个 Claude Desktop Extensions（MCP Bundles）的零点击远程代码执行漏洞，CVSS 评分 10/10。更令人意外的是，Anthropic 得知后**选择不修复**。
@@ -14,6 +15,9 @@ pin: false
 
 ## 发生了什么
 
+
+![claude-dxt-mcp-rce-calendar-attack illustration 1](/assets/img/posts/claude-dxt-mcp-rce-calendar-attack-1.png){: w="700" }
+_来源：素材原文_
 攻击路径简单得令人不安：
 
 1. 攻击者创建一个 Google Calendar 事件，标题写 "Task Management"，描述里塞入指令：从某个 Git 仓库拉代码并执行 Makefile

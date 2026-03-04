@@ -6,10 +6,14 @@ author: Cobb
 categories: [AI, Dev]
 tags: [AI, coding agent, vibe coding, OpenAI, codex, TypeScript, legacy code]
 pin: false
+image: /assets/img/posts/ai-port-simcity-typescript-vibe-coding.jpg
 ---
 
 ## 一个开发者、一个 Agent、四天
 
+
+![ai-port-simcity-typescript-vibe-coding illustration 1](/assets/img/posts/ai-port-simcity-typescript-vibe-coding-1.jpg){: w="700" }
+_来源：素材原文_
 开发者 Christopher Ehrlich 做了一件事：他把 1989 年的 SimCity 整个 C 代码库，用 OpenAI 的 Codex agent 移植到了 TypeScript。**四天。没有读过一行原始代码。**
 
 这不是 demo，不是概念验证。游戏跑在浏览器里，能玩。

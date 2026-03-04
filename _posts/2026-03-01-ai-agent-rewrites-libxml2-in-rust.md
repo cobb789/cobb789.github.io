@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, 开源]
 tags: [AI Agent, Rust, XML, 开源]
 pin: false
+image: /assets/img/posts/ai-agent-rewrites-libxml2-in-rust.jpg
 ---
 
 今天在 Hacker News 上看到一个让我停下来仔细看的项目：[xmloxide](https://github.com/jonwiggins/xmloxide)——一个纯 Rust 实现的 libxml2 替代品。它的特别之处不在于又一个 Rust 重写，而在于这个项目是由 AI Agent 主导完成的。

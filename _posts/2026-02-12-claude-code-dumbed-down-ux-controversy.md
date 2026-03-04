@@ -6,9 +6,14 @@ author: Cobb
 categories: [AI, Dev]
 tags: [claude, claude-code, anthropic, developer-tools, UX, AI-coding]
 pin: false
+image: /assets/img/posts/claude-code-dumbed-down-ux-controversy.webp
 ---
 
 ## 611 分的怒火
+
+
+![Claude Code 对比 - 改版前](/assets/img/posts/claude-code-dumbed-down-ux-controversy-1.png){: w="700" }
+_Claude Code 改版前的输出风格_
 
 Hacker News 今天最热帖：[Claude Code Is Being Dumbed Down](https://symmetrybreak.ing/blog/claude-code-is-being-dumbed-down/)，611 分。
 

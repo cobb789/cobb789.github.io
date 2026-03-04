@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, 开发工具]
 tags: [LLM, 本地部署, 开源工具, llmfit]
 pin: false
+image: /assets/img/posts/llmfit-auto-match-llm-to-hardware.jpg
 ---
 
 本地跑大模型最头疼的事情是什么？不是安装环境，不是下载权重——是选模型。
@@ -16,6 +17,9 @@ pin: false
 
 ## 解决的痛点
 
+
+![llmfit-auto-match-llm-to-hardware illustration 1](/assets/img/posts/llmfit-auto-match-llm-to-hardware-1.gif){: w="700" }
+_来源：素材原文_
 本地部署 LLM 的典型流程是这样的：
 
 1. 看到某个模型效果不错，想本地跑

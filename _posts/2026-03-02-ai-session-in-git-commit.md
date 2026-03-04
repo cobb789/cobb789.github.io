@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, 开发工具]
 tags: [AI编程, Git, 开发者工具, 代码审计]
 pin: false
+image: /assets/img/posts/ai-session-in-git-commit.jpg
 ---
 
 做 [ofox.ai](https://ofox.ai)（多模型聚合平台）的过程中，我每天大量使用 AI 辅助编码。最近在 Hacker News 上看到一个项目，让我重新思考了一个问题：**AI 帮你写的代码，那段对话该不该成为代码历史的一部分？**

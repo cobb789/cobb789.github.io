@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, 前端]
 tags: [Cloudflare, Next.js, Vite, AI编程, vinext]
 pin: false
+image: /assets/img/posts/cloudflare-vinext-nextjs-rebuilt-by-ai.jpg
 ---
 
 昨天 Cloudflare 发了一篇博客，标题很炸裂：**一个工程师用 AI 在一周内重写了 Next.js**。产物叫 [vinext](https://github.com/cloudflare/vinext)，基于 Vite 构建，号称是 Next.js 的 drop-in 替代品，构建速度快 4 倍，客户端产物体积小 57%，而且已经有客户在生产环境跑了。

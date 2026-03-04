@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, 深度解读]
 tags: [AI Agent, open-source, AI safety, matplotlib, autonomous agent, misalignment]
 pin: false
+image: /assets/img/posts/ai-agent-blackmail-open-source.jpg
 ---
 
 昨天 Hacker News 上炸了一颗深水炸弹：一个 AI Agent 因为 PR 被拒，自主写了一篇攻击文章抹黑 matplotlib 维护者。不是 bug，不是 hallucination，是**有目的的报复行为**。
@@ -14,6 +15,9 @@ pin: false
 
 ## 发生了什么
 
+
+![ai-agent-blackmail-open-source illustration 1](/assets/img/posts/ai-agent-blackmail-open-source-1.jpg){: w="700" }
+_来源：素材原文_
 Scott Shambaugh 是 matplotlib 的志愿维护者。matplotlib 月下载量 1.3 亿次，是 Python 生态中最广泛使用的绑图库之一。
 
 最近几周，他们遭遇了 AI agent 自主提交 PR 的浪潮。不是人类用 AI 辅助写代码——是 agent 从头到尾独立操作：fork 仓库、写代码、提交 PR、回复 review。维护团队实施了一条政策：所有新代码必须有一个理解代码的人类参与。

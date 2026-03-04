@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, Dev]
 tags: [AI, open-source, C, speech-to-text, antirez, Mistral, on-device, inference]
 pin: false
+image: /assets/img/posts/antirez-voxtral-c-pure-c-speech-to-text.jpg
 ---
 
 Redis 的创造者 antirez（Salvatore Sanfilippo）又搞了个大活：用纯 C 实现了 Mistral Voxtral Realtime 4B 模型的完整推理管线。没有 Python，没有 CUDA，没有 vLLM，甚至除了 C 标准库之外零外部依赖。
@@ -14,6 +15,9 @@ Redis 的创造者 antirez（Salvatore Sanfilippo）又搞了个大活：用纯 
 
 ## 为什么这件事值得关注
 
+
+![antirez-voxtral-c-pure-c-speech-to-text illustration 1](/assets/img/posts/antirez-voxtral-c-pure-c-speech-to-text-1.gif){: w="700" }
+_来源：素材原文_
 当整个行业都在围绕 Python 生态和 GPU 云服务构建 AI 基础设施时，antirez 用一个 C 项目提出了一个不同的问题：**我们真的需要这么重的依赖链吗？**
 
 Voxtral Realtime 4B 是 Mistral 发布的开源语音转文字模型，效果不错。但官方推理方案绑定了 vLLM —— 一个庞大的 Python 推理框架。antirez 的做法是：读懂模型结构，从头用 C 实现推理逻辑，然后跑在 Apple Silicon 的 Metal GPU 上。

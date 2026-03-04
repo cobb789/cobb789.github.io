@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, Tools]
 tags: [AI, search, RAG, local-first, agent, MCP, open-source]
 pin: false
+image: /assets/img/posts/qmd-local-search-engine.jpg
 ---
 
 AI Agent 越来越能干，但有一个问题始终没被优雅地解决——**记忆**。
@@ -16,6 +17,9 @@ AI Agent 越来越能干，但有一个问题始终没被优雅地解决——**
 
 ## QMD 是什么
 
+
+![qmd-local-search-engine illustration 1](/assets/img/posts/qmd-local-search-engine-1.png){: w="700" }
+_来源：素材原文_
 一句话总结：**一个完全本地运行的混合搜索引擎，专为文档、笔记和知识库设计，可以直接接入 AI Agent 工作流。**
 
 你可以把你的 Markdown 笔记、会议纪要、项目文档甚至代码注释都丢给它索引，然后用关键词或自然语言去搜索。它不依赖任何云端服务，所有的 embedding 生成、搜索排序、LLM 重排序都在你的机器上完成。

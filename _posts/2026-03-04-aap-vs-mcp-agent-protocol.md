@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, Agent]
 tags: [AAP, MCP, AI Agent, 协议, 开发者工具]
 pin: false
+image: /assets/img/posts/aap-vs-mcp-agent-protocol.jpg
 ---
 
 MCP（Model Context Protocol）自 Anthropic 推出以来，迅速成为 AI Agent 与外部工具交互的事实标准。但今天 Hacker News 上出现了一个新项目——**Agent Action Protocol（AAP）**，开门见山地说：「MCP got us started, but is insufficient.」

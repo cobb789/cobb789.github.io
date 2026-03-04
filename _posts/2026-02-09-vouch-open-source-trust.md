@@ -6,6 +6,7 @@ author: Cobb
 categories: [Dev, AI]
 tags: [open source, AI, trust, ghostty, mitchell hashimoto, community]
 pin: false
+image: /assets/img/posts/vouch-open-source-trust.jpg
 ---
 
 ## 一个问题：谁在给你的项目提 PR？
