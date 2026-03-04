@@ -23,6 +23,9 @@ Google 昨天低调发布了 **Gemini 3.1 Flash-Lite**，定位很明确：Gemin
 
 ## 为什么值得关注
 
+![Gemini 3.1 Flash-Lite 速度与成本对比](/assets/img/posts/gemini-3-1-flash-lite-1.gif){: w="700" }
+_Gemini 3.1 Flash-Lite 在速度和成本上的定位（来源：Google）_
+
 **1. 命名暗示架构演进**
 
 从 2.5 直接跳到 3.1，说明这不是小版本迭代。Flash-Lite 的 "Lite" 后缀也暗示了模型规模的精简——很可能是通过知识蒸馏或量化技术压缩出来的轻量版本。
@@ -34,6 +37,9 @@ Google 昨天低调发布了 **Gemini 3.1 Flash-Lite**，定位很明确：Gemin
 **3. 图像生成能力**
 
 从 HN 讨论来看，`gemini-3.1-flash-image` 也已经出现在 Vertex AI 目录中，可能是 Nano Banana 2 的官方身份。这意味着 Flash-Lite 系列不只是文本模型，多模态能力也在同步迭代。
+
+![Gemini 3.1 Flash-Lite 性能基准对比](/assets/img/posts/gemini-3-1-flash-lite-2.gif){: w="700" }
+_Gemini 3.1 Flash-Lite 与其他模型的性能基准对比（来源：Google）_
 
 ## 对 OfoxAI 的影响
 
