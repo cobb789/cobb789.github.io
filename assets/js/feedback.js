@@ -19,12 +19,11 @@
     return;
   }
 
-  // Randomly pick mode: 0 = updown, 1 = stars
-  const mode = Math.random() < 0.5 ? 'updown' : 'stars';
+  const mode = 'updown';
 
   const container = document.createElement('div');
   container.className = 'feedback-widget';
-  container.innerHTML = mode === 'updown' ? renderUpdown() : renderStars();
+  container.innerHTML = renderUpdown();
 
   // Insert before related posts or at end of article content
   const content = article.querySelector('.post-content') || article;
