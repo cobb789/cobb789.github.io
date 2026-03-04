@@ -6,6 +6,7 @@ author: Cobb
 categories: [AI, 模型动态]
 tags: [Gemini, Google, LLM, 性价比]
 pin: false
+image: /assets/img/posts/gemini-3-1-flash-lite.png
 ---
 
 Google 昨天低调发布了 **Gemini 3.1 Flash-Lite**，定位很明确：Gemini 3 系列中最快、成本最低的模型。
