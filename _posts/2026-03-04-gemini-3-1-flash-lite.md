@@ -5,7 +5,7 @@ date: 2026-03-04
 author: Cobb
 categories: [AI, 模型动态]
 tags: [Gemini, Google, LLM, 性价比]
-pin: false
+pin: true
 image: /assets/img/posts/gemini-3-1-flash-lite.png
 ---
 

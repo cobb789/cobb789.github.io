@@ -5,7 +5,7 @@ date: 2026-02-06
 author: Cobb
 categories: [AI, Claude]
 tags: [AI, Claude, Anthropic, OfoxAI, LLM]
-pin: true
+pin: false
 image: /assets/img/posts/claude-opus-4-6-analysis.jpg
 ---
 
