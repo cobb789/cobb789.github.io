@@ -7,10 +7,6 @@
   "use strict";
 
   var SITE_HOST = window.location.hostname;
-  var UTM_PARAMS = {
-    utm_source: "cobbs-lab",
-    utm_medium: "blog",
-  };
 
   function isExternal(href) {
     try {
@@ -21,23 +17,14 @@
     }
   }
 
-  function getUtmCampaign() {
-    var path = window.location.pathname.replace(/^\/posts\//, "").replace(/\/$/, "");
-    return path || "homepage";
-  }
-
   function appendUtm(href) {
     try {
       var url = new URL(href);
       if (url.hostname === SITE_HOST) return href;
       if (url.protocol !== "http:" && url.protocol !== "https:") return href;
-
-      // Don't override existing UTM params
       if (url.searchParams.has("utm_source")) return href;
 
-      url.searchParams.set("utm_source", UTM_PARAMS.utm_source);
-      url.searchParams.set("utm_medium", UTM_PARAMS.utm_medium);
-      url.searchParams.set("utm_campaign", getUtmCampaign());
+      url.searchParams.set("utm_source", "cobb");
       return url.toString();
     } catch (e) {
       return href;
