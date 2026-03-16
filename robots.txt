@@ -1,0 +1,66 @@
+# Cobb's Lab - AI & Agent Technology Blog
+# https://cobb789.ofox.ai
+# Last updated: 2026-03-16
+
+# === Default: allow all crawlers ===
+User-agent: *
+Allow: /
+Disallow: /assets/js/
+Disallow: /norobots/
+
+# === AI Search & Inference Bots (full access) ===
+# These bots power AI search results and should have full access
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# === AI Training Bots (selective access) ===
+# Allow access to AI-specific docs and blog content
+User-agent: GPTBot
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap-ai.json
+Allow: /.well-known/
+Allow: /posts/
+Allow: /categories/
+Allow: /tags/
+Disallow: /assets/js/
+
+User-agent: CCBot
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /posts/
+Disallow: /
+
+# === IETF AIPREF Draft (future-proofing) ===
+# allow=search,inference,citation
+# disallow=training-without-attribution
+
+# === AI Discovery Endpoints ===
+# /llms.txt          - Short LLM-readable site summary
+# /llms-full.txt     - Full LLM-readable blog documentation
+# /sitemap-ai.json   - AI-optimized sitemap (schema.org DataFeed)
+# /.well-known/llm-context - JSON manifest for AI crawlers
+
+# Standard sitemap
+Sitemap: https://cobb789.ofox.ai/sitemap.xml

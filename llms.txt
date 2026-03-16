@@ -1,0 +1,52 @@
+---
+layout: none
+permalink: /llms.txt
+---
+# {{ site.title }}
+
+> {{ site.description | strip_newlines }}
+
+## About
+
+{{ site.title }} is a Chinese-language technology blog focused on AI agents, LLM architecture, developer tools, and the evolving AI ecosystem. Published daily with analysis of trending topics from Hacker News, official AI lab announcements, and the open-source community.
+
+## Topics
+
+- AI Agent architecture and frameworks (OpenClaw, MCP, AAP)
+- Large Language Models (Claude, GPT, Gemini, Kimi, DeepSeek)
+- AI coding tools and developer experience
+- AI safety, ethics, and governance
+- Open-source AI ecosystem
+- AI product strategy and startup insights
+
+## Recent Posts (Latest {{ site.posts | size | at_most: 10 }})
+{% for post in site.posts limit:10 %}
+- [{{ post.title }}]({{ post.url | absolute_url }}) ({{ post.date | date: "%Y-%m-%d" }})
+{%- endfor %}
+
+## Categories
+{% for category in site.categories %}
+- {{ category[0] }} ({{ category[1].size }} posts)
+{%- endfor %}
+
+## Key Pages
+
+- Blog: {{ site.url }}/
+- Archives: {{ site.url }}/archives/
+- Categories: {{ site.url }}/categories/
+- Tags: {{ site.url }}/tags/
+- About: {{ site.url }}/about/
+
+## Author
+
+Cobb — AI architect at OfoxAI (https://ofox.ai), specializing in multi-model AI gateway systems and autonomous agent infrastructure.
+
+## Full Documentation
+
+For complete blog content and metadata, see: {{ site.url }}/llms-full.txt
+
+## Related
+
+- OfoxAI Platform: https://ofox.ai
+- GitHub: https://github.com/{{ site.github.username }}
+- X/Twitter: https://x.com/{{ site.twitter.username }}

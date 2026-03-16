@@ -1,0 +1,67 @@
+---
+layout: none
+permalink: /sitemap-ai.json
+---
+{
+  "@context": "https://schema.org",
+  "@type": "DataFeed",
+  "name": "{{ site.title }} - AI Sitemap",
+  "description": "AI-optimized sitemap for {{ site.title }} technology blog",
+  "url": "{{ site.url }}/sitemap-ai.json",
+  "dateModified": "{{ site.time | date: '%Y-%m-%d' }}",
+  "provider": {
+    "@type": "Person",
+    "name": "{{ site.social.name }}",
+    "url": "{{ site.url }}"
+  },
+  "dataFeedElement": [
+    {
+      "@type": "DataFeedItem",
+      "item": {
+        "@type": "WebPage",
+        "name": "Homepage",
+        "url": "{{ site.url }}/",
+        "description": {{ site.description | strip_newlines | jsonify }},
+        "inLanguage": "{{ site.lang }}",
+        "keywords": ["AI", "LLM", "Agent", "技术博客"]
+      }
+    },
+    {
+      "@type": "DataFeedItem",
+      "item": {
+        "@type": "WebPage",
+        "name": "Archives",
+        "url": "{{ site.url }}/archives/",
+        "description": "Complete chronological archive of all {{ site.posts | size }} blog posts",
+        "inLanguage": "{{ site.lang }}"
+      }
+    },
+    {
+      "@type": "DataFeedItem",
+      "item": {
+        "@type": "WebPage",
+        "name": "Categories",
+        "url": "{{ site.url }}/categories/",
+        "description": "Blog posts organized by category{% for cat in site.categories %}: {{ cat[0] }}{% endfor %}",
+        "inLanguage": "{{ site.lang }}"
+      }
+    }{% for post in site.posts limit:20 %},
+    {
+      "@type": "DataFeedItem",
+      "dateModified": "{{ post.date | date: '%Y-%m-%d' }}",
+      "item": {
+        "@type": "BlogPosting",
+        "name": {{ post.title | jsonify }},
+        "url": "{{ post.url | absolute_url }}",
+        "description": {{ post.excerpt | strip_html | truncate: 160 | jsonify }},
+        "datePublished": "{{ post.date | date: '%Y-%m-%d' }}",
+        "inLanguage": "{{ site.lang }}",
+        "keywords": {{ post.tags | jsonify }},
+        "author": {
+          "@type": "Person",
+          "name": "{{ site.social.name }}"
+        }
+      }
+    }{% endfor %}
+  ]
+}

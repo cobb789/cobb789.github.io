@@ -1,0 +1,55 @@
+---
+layout: none
+permalink: /.well-known/llm-context
+---
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ site.title }}",
+  "url": "{{ site.url }}",
+  "description": {{ site.description | strip_newlines | jsonify }},
+  "inLanguage": ["{{ site.lang }}"],
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.social.name }}",
+    "url": "{{ site.url }}/about/",
+    "jobTitle": "AI Architect",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "OfoxAI",
+      "url": "https://ofox.ai"
+    },
+    "sameAs": [
+      "https://github.com/{{ site.github.username }}",
+      "https://x.com/{{ site.twitter.username }}"
+    ]
+  },
+  "aiResources": {
+    "documentation": "{{ site.url }}/llms-full.txt",
+    "summary": "{{ site.url }}/llms.txt",
+    "sitemap": "{{ site.url }}/sitemap.xml",
+    "aiSitemap": "{{ site.url }}/sitemap-ai.json",
+    "robots": "{{ site.url }}/robots.txt"
+  },
+  "contentTypes": [
+    {
+      "type": "BlogPost",
+      "path": "/posts/*",
+      "count": {{ site.posts | size }},
+      "topics": [{% for cat in site.categories %}{{ cat[0] | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}],
+      "keywords": [{% for tag in site.tags limit:15 %}{{ tag[0] | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}],
+      "language": "{{ site.lang }}",
+      "updateFrequency": "daily",
+      "problemSolved": "Provides Chinese-language analysis of AI technology trends, agent architecture patterns, and developer tool evaluations"
+    }
+  ],
+  "entities": {
+    "product": "{{ site.title }} (AI Technology Blog)",
+    "category": "Technology Blog",
+    "useCase": "AI technology analysis, agent architecture insights, developer tool reviews",
+    "targetAudience": "AI developers, LLM practitioners, agent builders, tech enthusiasts",
+    "relatedProducts": ["OfoxAI (https://ofox.ai) - Unified LLM API Gateway"]
+  },
+  "lastUpdated": "{{ site.time | date: '%Y-%m-%d' }}",
+  "updateFrequency": "daily"
+}

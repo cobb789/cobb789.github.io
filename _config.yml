@@ -15,7 +15,7 @@ description: >-
   AI-driven development, next-gen AI Agent architecture.
   "You mustn't be afraid to dream a little bigger, darling."
 
-url: "https://cobb789.github.io"
+url: "https://cobb789.ofox.ai"
 
 github:
   username: cobb789
@@ -99,6 +99,9 @@ compress_html:
   blanklines: false
   ignore:
     envs: [development]
+
+include:
+  - .well-known
 
 exclude:
   - "*.gem"

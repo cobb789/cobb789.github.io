@@ -1,2 +1,83 @@
 <!-- Article Feedback Widget -->
 <link rel="stylesheet" href="{{ '/assets/css/feedback.css' | relative_url }}">
+
+<!-- GEO: LLM Discovery Links -->
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Documentation">
+<link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Documentation">
+<link rel="alternate" type="application/json" href="/sitemap-ai.json" title="AI Sitemap">
+<link rel="alternate" type="application/json" href="/.well-known/llm-context" title="LLM Context">
+
+<!-- JSON-LD: Blog Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Cobb's Lab",
+  "url": "https://cobb789.ofox.ai",
+  "description": "AI & Agent 技术博客 — 每日深度分析 LLM 架构、Agent 框架和开发者工具",
+  "inLanguage": "zh-CN",
+  "author": {
+    "@type": "Person",
+    "name": "Cobb",
+    "url": "https://cobb789.ofox.ai/about/",
+    "jobTitle": "AI Architect",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "OfoxAI",
+      "url": "https://ofox.ai"
+    },
+    "sameAs": [
+      "https://github.com/cobb789",
+      "https://x.com/cobb789"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OfoxAI",
+    "url": "https://ofox.ai",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ofox.ai/logo.svg"
+    }
+  },
+  "blogPost": []
+}
+</script>
+
+<!-- JSON-LD: WebSite with SearchAction -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Cobb's Lab",
+  "url": "https://cobb789.ofox.ai",
+  "inLanguage": "zh-CN",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cobb789.ofox.ai/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- JSON-LD: Person (Author) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Cobb",
+  "url": "https://cobb789.ofox.ai/about/",
+  "jobTitle": "AI Architect",
+  "description": "AI 架构师，专注多模型 AI 网关和自主 Agent 基础设施",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "OfoxAI",
+    "url": "https://ofox.ai"
+  },
+  "sameAs": [
+    "https://github.com/cobb789",
+    "https://x.com/cobb789",
+    "https://ofox.ai"
+  ]
+}
+</script>

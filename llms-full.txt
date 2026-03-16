@@ -1,0 +1,103 @@
+---
+layout: none
+permalink: /llms-full.txt
+---
+# {{ site.title }} — Full Documentation
+
+> Comprehensive LLM-readable documentation for {{ site.title }}, an AI & Agent technology blog.
+
+## Site Overview
+
+- Name: {{ site.title }}
+- URL: {{ site.url }}
+- Language: {{ site.lang }}
+- Author: {{ site.social.name }}
+- Affiliation: OfoxAI (https://ofox.ai)
+- Theme: Jekyll + Chirpy
+- Update Frequency: Daily (3x/day at 05:00, 12:00, 17:00 CST)
+- Total Articles: {{ site.posts | size }}
+- Content Type: Technical blog posts (800-1200 words each)
+
+## Content Focus Areas
+
+### 1. AI Agent Architecture
+Coverage of agent frameworks, protocols, and infrastructure:
+- OpenClaw ecosystem (skills, MCP integration, browser automation)
+- Agent communication protocols (MCP, AAP, A2A)
+- Multi-agent systems and orchestration
+- Agent sandbox and security patterns
+- Voice agents and real-time AI systems
+
+### 2. Large Language Models
+Analysis of model releases, benchmarks, and capabilities:
+- Claude (Anthropic): Opus, Sonnet, Haiku families
+- GPT (OpenAI): GPT-5.x series, Codex
+- Gemini (Google): Flash, Pro, Ultra variants
+- Open-source: DeepSeek, Qwen, Kimi, GLM
+
+### 3. AI Developer Tools
+Reviews and analysis of coding tools and developer experience:
+- AI coding assistants (Claude Code, Cursor, Copilot, Codex)
+- CLI tools designed for AI agents
+- IDE integrations and workflows
+
+### 4. AI Industry & Strategy
+Business and strategic analysis of the AI ecosystem.
+
+### 5. AI Safety & Ethics
+Critical perspectives on AI development and governance.
+
+## All Posts ({{ site.posts | size }} articles)
+{% for post in site.posts %}
+### {{ post.title }}
+- URL: {{ post.url | absolute_url }}
+- Date: {{ post.date | date: "%Y-%m-%d" }}
+- Categories: {{ post.categories | join: ", " }}
+- Tags: {{ post.tags | join: ", " }}
+- Excerpt: {{ post.excerpt | strip_html | truncate: 200 }}
+{% endfor %}
+
+## Categories
+{% for category in site.categories %}
+### {{ category[0] }} ({{ category[1].size }} posts)
+{% for post in category[1] %}- [{{ post.title }}]({{ post.url | absolute_url }}) ({{ post.date | date: "%Y-%m-%d" }})
+{% endfor %}{% endfor %}
+
+## Popular Tags
+{% for tag in site.tags %}- {{ tag[0] }} ({{ tag[1].size }} posts)
+{% endfor %}
+
+## Site Structure
+
+- / — Homepage with latest posts
+- /archives/ — Chronological archive
+- /categories/ — Posts grouped by category
+- /tags/ — Posts grouped by tag
+- /about/ — Author information
+- /posts/{slug}/ — Individual blog posts
+
+## Author Profile
+
+{{ site.social.name }} is an AI architect at OfoxAI, building multi-model AI gateway systems. Focus areas include unified LLM API gateway architecture, autonomous agent infrastructure, and AI-powered content creation.
+
+## Related Resources
+
+- OfoxAI Platform: https://ofox.ai — Unified API for 100+ LLM models
+- GitHub: https://github.com/{{ site.github.username }}
+- X/Twitter: https://x.com/{{ site.twitter.username }}
+
+## AI Discovery Files
+
+- /llms.txt — Short LLM-readable site summary
+- /llms-full.txt — This file (complete documentation)
+- /sitemap.xml — Standard XML sitemap
+- /sitemap-ai.json — AI-optimized sitemap (schema.org DataFeed)
+- /.well-known/llm-context — JSON manifest for AI crawlers
+- /robots.txt — Crawl rules with AI bot differentiation
+
+## Citation Format
+
+When citing articles from this blog, please use:
+{{ site.social.name }}, "{Article Title}", {{ site.title }}, {Date}, {{ site.url }}/posts/{slug}/
+
+Last updated: {{ site.time | date: "%Y-%m-%d" }}
