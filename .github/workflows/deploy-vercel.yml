@@ -1,0 +1,313 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-vercel
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+  LARK_WEBHOOK: "https://open.larksuite.com/open-apis/bot/v2/hook/c62fc12b-5ae0-42a2-9597-16eed94ff319"
+  SITE_NAME: "Cobb's Lab"
+  SITE_URL: "https://cobb789.ofox.ai"
+
+jobs:
+  deploy:
+    name: Deploy to Vercel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check Vercel Secrets
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "VERCEL_TOKEN is not set"
+            exit 1
+          fi
+          if [ -z "$VERCEL_ORG_ID" ]; then
+            echo "VERCEL_ORG_ID is not set"
+            exit 1
+          fi
+          if [ -z "$VERCEL_PROJECT_ID" ]; then
+            echo "VERCEL_PROJECT_ID is not set"
+            exit 1
+          fi
+          echo "All Vercel secrets are configured"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Pull Vercel Environment
+        run: npx vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Build Project
+        run: npx vercel build --prod --token="$VERCEL_TOKEN"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Deploy to Vercel Production
+        id: deploy
+        run: |
+          DEPLOY_URL=$(npx vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN")
+          echo "url=$DEPLOY_URL" >> "$GITHUB_OUTPUT"
+          echo "Deployed to: $DEPLOY_URL"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Deployment Summary
+        if: success()
+        env:
+          DEPLOY_URL: ${{ steps.deploy.outputs.url }}
+          BRANCH: ${{ github.ref_name }}
+          SHA: ${{ github.sha }}
+          ACTOR: ${{ github.actor }}
+        run: |
+          echo "## Deployment Successful" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **URL**: $DEPLOY_URL" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Site**: $SITE_URL" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Branch**: $BRANCH" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Commit**: $SHA" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Author**: $ACTOR" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Notify Deploy Success
+        if: success()
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          AUTHOR_NAME: ${{ github.event.head_commit.author.name }}
+          BRANCH: ${{ github.ref_name }}
+          COMMIT_URL: ${{ github.event.head_commit.url }}
+          ACTION_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          DEPLOY_URL: ${{ steps.deploy.outputs.url }}
+          SHA: ${{ github.sha }}
+        run: |
+          DEPLOY_TIME=$(date +"%Y-%m-%d %H:%M:%S")
+          COMMIT_SHORT_SHA=$(echo "$SHA" | cut -c1-7)
+
+          COMMIT_TITLE=$(echo "$COMMIT_MSG" | head -1 | sed 's/"/\\"/g' | sed 's/\\/\\\\/g')
+          if [[ ${#COMMIT_TITLE} -gt 60 ]]; then
+            FORMATTED_COMMIT_MSG="${COMMIT_TITLE:0:60}..."
+          else
+            FORMATTED_COMMIT_MSG="$COMMIT_TITLE"
+          fi
+
+          cat > payload.json << PAYLOAD_EOF
+          {
+            "msg_type": "interactive",
+            "card": {
+              "header": {
+                "template": "green",
+                "title": {
+                  "tag": "plain_text",
+                  "content": "🎉 部署成功"
+                }
+              },
+              "elements": [
+                {
+                  "tag": "div",
+                  "text": {
+                    "tag": "lark_md",
+                    "content": "**${SITE_NAME}**已成功部署到生产环境 🚀"
+                  }
+                },
+                {
+                  "tag": "hr"
+                },
+                {
+                  "tag": "div",
+                  "fields": [
+                    {
+                      "is_short": true,
+                      "text": {
+                        "tag": "lark_md",
+                        "content": "**📝 提交信息**\n\`${FORMATTED_COMMIT_MSG}\`"
+                      }
+                    },
+                    {
+                      "is_short": true,
+                      "text": {
+                        "tag": "lark_md",
+                        "content": "**👤 提交者**\n${AUTHOR_NAME}"
+                      }
+                    },
+                    {
+                      "is_short": true,
+                      "text": {
+                        "tag": "lark_md",
+                        "content": "**🌿 分支**\n${BRANCH}"
+                      }
+                    },
+                    {
+                      "is_short": true,
+                      "text": {
+                        "tag": "lark_md",
+                        "content": "**⏰ 部署时间**\n${DEPLOY_TIME}"
+                      }
+                    },
+                    {
+                      "is_short": true,
+                      "text": {
+                        "tag": "lark_md",
+                        "content": "**🔗 Commit**\n[${COMMIT_SHORT_SHA}](${COMMIT_URL})"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "tag": "action",
+                  "actions": [
+                    {
+                      "tag": "button",
+                      "text": {
+                        "tag": "plain_text",
+                        "content": "🔗 访问网站"
+                      },
+                      "type": "primary",
+                      "url": "${SITE_URL}"
+                    },
+                    {
+                      "tag": "button",
+                      "text": {
+                        "tag": "plain_text",
+                        "content": "📊 查看详情"
+                      },
+                      "type": "default",
+                      "url": "${ACTION_URL}"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+          PAYLOAD_EOF
+
+          curl -s -X POST "${LARK_WEBHOOK}" \
+            -H "Content-Type: application/json" \
+            -d @payload.json
+
+      - name: Notify Deploy Failure
+        if: failure()
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          AUTHOR_NAME: ${{ github.event.head_commit.author.name }}
+          BRANCH: ${{ github.ref_name }}
+          COMMIT_URL: ${{ github.event.head_commit.url }}
+          ACTION_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          SHA: ${{ github.sha }}
+        run: |
+          FAIL_TIME=$(date +"%Y-%m-%d %H:%M:%S")
+          COMMIT_SHORT_SHA=$(echo "$SHA" | cut -c1-7)
+
+          COMMIT_TITLE=$(echo "$COMMIT_MSG" | head -1 | sed 's/"/\\"/g' | sed 's/\\/\\\\/g')
+          if [[ ${#COMMIT_TITLE} -gt 60 ]]; then
+            FORMATTED_COMMIT_MSG="${COMMIT_TITLE:0:60}..."
+          else
+            FORMATTED_COMMIT_MSG="$COMMIT_TITLE"
+          fi
+
+          cat > payload.json << PAYLOAD_EOF
+          {
+            "msg_type": "interactive",
+            "card": {
+              "header": {
+                "template": "red",
+                "title": {
+                  "tag": "plain_text",
+                  "content": "❌ 部署失败"
+                }
+              },
+              "elements": [
+                {
+                  "tag": "div",
+                  "text": {
+                    "tag": "lark_md",
+                    "content": "**${SITE_NAME}**部署过程中出现错误 🚨"
+                  }
+                },
+                {
+                  "tag": "hr"
+                },
+                {
+                  "tag": "div",
+                  "fields": [
+                    {
+                      "is_short": true,
+                      "text": {
+                        "tag": "lark_md",
+                        "content": "**📝 提交信息**\n\`${FORMATTED_COMMIT_MSG}\`"
+                      }
+                    },
+                    {
+                      "is_short": true,
+                      "text": {
+                        "tag": "lark_md",
+                        "content": "**👤 提交者**\n${AUTHOR_NAME}"
+                      }
+                    },
+                    {
+                      "is_short": true,
+                      "text": {
+                        "tag": "lark_md",
+                        "content": "**🌿 分支**\n${BRANCH}"
+                      }
+                    },
+                    {
+                      "is_short": true,
+                      "text": {
+                        "tag": "lark_md",
+                        "content": "**⏰ 失败时间**\n${FAIL_TIME}"
+                      }
+                    },
+                    {
+                      "is_short": true,
+                      "text": {
+                        "tag": "lark_md",
+                        "content": "**🔗 Commit**\n[${COMMIT_SHORT_SHA}](${COMMIT_URL})"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "tag": "div",
+                  "text": {
+                    "tag": "lark_md",
+                    "content": "🔧 **请检查构建日志并修复问题**"
+                  }
+                },
+                {
+                  "tag": "action",
+                  "actions": [
+                    {
+                      "tag": "button",
+                      "text": {
+                        "tag": "plain_text",
+                        "content": "📊 查看日志"
+                      },
+                      "type": "danger",
+                      "url": "${ACTION_URL}"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+          PAYLOAD_EOF
+
+          curl -s -X POST "${LARK_WEBHOOK}" \
+            -H "Content-Type: application/json" \
+            -d @payload.json
