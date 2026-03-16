@@ -24,6 +24,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Create Empty Commit for Vercel
+        run: |
+          git config --global user.email "larry.koo711@gmail.com"
+          git config --global user.name "larrykoo711"
+          git commit --allow-empty -m "chore: trigger Vercel deployment [skip ci]"
+
       - name: Check Vercel Secrets
         run: |
           if [ -z "$VERCEL_TOKEN" ]; then
