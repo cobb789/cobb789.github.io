@@ -31,7 +31,7 @@ social:
     - https://ofox.ai
 
 # Prefer color scheme
-theme_mode: light
+# theme_mode: light  # Leave empty to respect OS preference & show toggle button
 
 # the avatar on sidebar
 avatar: "/assets/img/avatar.jpg"
