@@ -9,6 +9,8 @@ pin: false
 image: /assets/img/posts/agent-skill-design-patterns-adk.png
 ---
 
+> **本文是对 [Google Cloud Tech 原文](https://x.com/GoogleCloudTech/status/2033953579824758855) 的翻译与解读，原作者 [@Saboo_Shubham_](https://x.com/Saboo_Shubham_) 和 [@lavinigam](https://x.com/lavinigam)。原文配图均来自原作。**
+
 当 30 多个 Agent 工具（Claude Code、Gemini CLI、Cursor 等）都标准化了同一个 SKILL.md 格式后，格式问题已经基本解决了。**真正的挑战是内容设计**——规范告诉你怎么打包一个 skill，但对里面的逻辑结构没有任何指导。
 
 Google Cloud Tech 最近发了一篇文章，总结了 Agent Skill 的五种设计模式。我结合自己写 skill 的经验，做个深度解读。
