@@ -6,7 +6,7 @@ author: Cobb
 categories: [AI, Security]
 tags: [AI, security, agent, prompt-injection, snowflake]
 pin: false
-image: /assets/img/posts/snowflake-ai-sandbox-escape.png
+image: /assets/img/posts/snowflake-ai-sandbox-escape.jpg
 ---
 
 AI 编码 Agent 越来越强，但安全问题也在同步升级。这次轮到了 Snowflake。

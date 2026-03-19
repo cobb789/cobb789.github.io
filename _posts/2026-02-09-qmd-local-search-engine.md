@@ -18,7 +18,7 @@ AI Agent 越来越能干，但有一个问题始终没被优雅地解决——**
 ## QMD 是什么
 
 
-![qmd-local-search-engine illustration 1](/assets/img/posts/qmd-local-search-engine-1.png){: w="700" }
+![qmd-local-search-engine illustration 1](/assets/img/posts/qmd-local-search-engine-1.jpg){: w="700" }
 _来源：素材原文_
 一句话总结：**一个完全本地运行的混合搜索引擎，专为文档、笔记和知识库设计，可以直接接入 AI Agent 工作流。**
 

@@ -6,7 +6,7 @@ author: Cobb
 categories: [AI, Dev]
 tags: [AI, agent, MCP, context-window, CLI, LLM]
 pin: false
-image: /assets/img/posts/mcp-context-bloat-cli.png
+image: /assets/img/posts/mcp-context-bloat-cli.jpg
 ---
 
 MCP（Model Context Protocol）是过去一年 AI Agent 生态中最火的协议之一。几乎所有人都在围绕它建工具、写集成、做 demo。但当你把 demo 推向生产，一个尴尬的问题浮出水面：**你的 Agent 还没开始思考，上下文窗口就已经被塞满了。**
@@ -17,7 +17,7 @@ Apideck 团队最近发了一篇扎实的分析文章，指出了一个被忽视
 
 连接 GitHub、Slack、Sentry 三个服务，大约 40 个 tool。Agent 还没读用户消息，55,000 tokens 的 tool definitions 就已经占了 Claude 200k 上下文的四分之一。每个 MCP tool 光是名称、描述、JSON schema 就消耗 550–1,400 tokens。
 
-![Apideck CLI 与 MCP 的对比截图](/assets/img/posts/mcp-context-bloat-cli-1.png){: w="700" }
+![Apideck CLI 与 MCP 的对比截图](/assets/img/posts/mcp-context-bloat-cli-1.jpg){: w="700" }
 _MCP 与 CLI 在相同任务上的 token 消耗对比_
 
 更夸张的是，Scalekit 的基准测试用同一模型（Claude Sonnet 4）跑了 75 组对比：最简单的任务（查一个仓库的语言），MCP 用了 44,026 tokens，CLI 只用了 1,365。**32 倍的差距。**

@@ -6,7 +6,7 @@ author: Cobb
 categories: [AI, Dev]
 tags: [AI, Agent, git, open-standard, MCP, LLM]
 pin: false
-image: /assets/img/posts/gitagent-open-standard.png
+image: /assets/img/posts/gitagent-open-standard.jpg
 ---
 
 作为 [OfoxAI](https://ofox.ai)（ofox.ai）的工程师，我每天都在和各种 AI Agent 框架打交道。CrewAI、LangGraph、AutoGen… 每个框架都有自己定义 Agent 的方式，互不兼容。今天在 HN 上看到一个有意思的项目 — [GitAgent](https://www.gitagent.sh/)，试图用 Git 原生的方式定义一个开放的 Agent 标准。

@@ -18,7 +18,7 @@ image: /assets/img/posts/llmfit-auto-match-llm-to-hardware.jpg
 ## 解决的痛点
 
 
-![llmfit-auto-match-llm-to-hardware illustration 1](/assets/img/posts/llmfit-auto-match-llm-to-hardware-1.gif){: w="700" }
+![llmfit-auto-match-llm-to-hardware illustration 1](/assets/img/posts/llmfit-auto-match-llm-to-hardware-1.jpg){: w="700" }
 _来源：素材原文_
 本地部署 LLM 的典型流程是这样的：
 

@@ -6,7 +6,7 @@ author: Cobb
 categories: [AI, Security]
 tags: [AI, Agent, security, SQL injection, LLM, enterprise]
 pin: false
-image: /assets/img/posts/mckinsey-ai-hack.png
+image: /assets/img/posts/mckinsey-ai-hack.jpg
 ---
 
 麦肯锡，全球最顶级的咨询公司，43000+ 员工，世界级的安全团队，充足的预算。他们花了两年多打造内部 AI 平台 Lilli — 集成聊天、文档分析、RAG 检索，覆盖十万份内部文档，月处理 50 万次 prompt。
@@ -19,7 +19,7 @@ image: /assets/img/posts/mckinsey-ai-hack.png
 
 安全公司 CodeWall 的自主渗透 Agent 从域名开始扫描，发现 Lilli 的 API 文档被公开暴露 — 200 多个 endpoint，其中 22 个不需要认证。
 
-![数据规模](/assets/img/posts/mckinsey-ai-hack-1.png){: w="700" }
+![数据规模](/assets/img/posts/mckinsey-ai-hack-1.jpg){: w="700" }
 _未认证即可访问的数据规模_
 
 关键漏洞在一个写入搜索查询的 endpoint 上：值参数化了，但 JSON **键名**被直接拼接到 SQL 语句中。这是一种非标准的 SQL 注入变体，传统扫描器（包括 OWASP ZAP）完全没有检测到。

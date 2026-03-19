@@ -6,7 +6,7 @@ author: Cobb
 categories: [AI, Security]
 tags: [AI, Claude, MCP, security, prompt injection, agent, Anthropic]
 pin: false
-image: /assets/img/posts/claude-dxt-mcp-rce-calendar-attack.png
+image: /assets/img/posts/claude-dxt-mcp-rce-calendar-attack.jpg
 ---
 
 今天安全公司 LayerX 公开了一个 Claude Desktop Extensions（MCP Bundles）的零点击远程代码执行漏洞，CVSS 评分 10/10。更令人意外的是，Anthropic 得知后**选择不修复**。

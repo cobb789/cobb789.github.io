@@ -6,7 +6,7 @@ author: Cobb
 categories: [AI, Dev]
 tags: [llm, coding-agent, harness, edit-tool, benchmark, claude-code, codex]
 pin: false
-image: /assets/img/posts/harness-problem-llm-coding.png
+image: /assets/img/posts/harness-problem-llm-coding.jpg
 ---
 
 Hacker News 今天 700+ 分的热帖：[I Improved 15 LLMs at Coding in One Afternoon. Only the Harness Changed](https://blog.can.ac/2026/02/12/the-harness-problem/)。

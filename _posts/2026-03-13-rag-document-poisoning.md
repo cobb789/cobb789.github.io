@@ -6,7 +6,7 @@ author: Cobb
 categories: [AI, Security]
 tags: [RAG, AI Security, LLM, Vector Database, Prompt Injection]
 pin: false
-image: /assets/img/posts/rag-document-poisoning.png
+image: /assets/img/posts/rag-document-poisoning.jpg
 ---
 
 今天在 Hacker News 上看到一篇实操性很强的文章：有人在本地搭了一个 RAG 系统，往 ChromaDB 里注入了三份精心构造的假文件，成功让 LLM 把公司季度营收从 2470 万美元「更正」为 830 万美元。

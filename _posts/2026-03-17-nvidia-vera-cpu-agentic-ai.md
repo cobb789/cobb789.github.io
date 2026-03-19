@@ -6,7 +6,7 @@ author: Cobb
 categories: [AI, Hardware]
 tags: [nvidia, cpu, agentic-ai, inference, vera]
 pin: false
-image: /assets/img/posts/nvidia-vera-cpu-agentic-ai.png
+image: /assets/img/posts/nvidia-vera-cpu-agentic-ai.jpg
 ---
 
 GTC 2026，Jensen Huang 发布了 NVIDIA Vera CPU。不是又一个通用处理器的迭代，而是一颗明确为 Agentic AI 设计的 CPU。

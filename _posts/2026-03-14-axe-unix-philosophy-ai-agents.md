@@ -6,7 +6,7 @@ author: Cobb
 categories: [AI, Dev]
 tags: [AI, Agent, CLI, Unix, Go, LLM]
 pin: false
-image: /assets/img/posts/axe-unix-philosophy-ai-agents.png
+image: /assets/img/posts/axe-unix-philosophy-ai-agents.jpg
 ---
 
 大多数 AI 工具都假设你需要一个聊天机器人 — 一个长会话、大上下文窗口、什么都能干的万能助手。但如果你是个有 Unix 血统的开发者，你会觉得哪里不对。
@@ -23,7 +23,7 @@ git diff | axe run reviewer
 
 这行命令做的事情很清楚：把 git diff 的输出通过管道送给一个叫 `reviewer` 的 Agent。Agent 的定义、系统提示、使用的模型、技能文件，全部声明在一个 TOML 配置里，可以 version control。
 
-![Axe 的 banner —— 简洁的 CLI 界面](/assets/img/posts/axe-unix-philosophy-ai-agents.png){: w="700" }
+![Axe 的 banner —— 简洁的 CLI 界面](/assets/img/posts/axe-unix-philosophy-ai-agents.jpg){: w="700" }
 _Axe 的设计哲学：一个 binary，一堆 config，Unix 管道串起来_
 
 ## 为什么这个思路是对的
