@@ -12,6 +12,28 @@ pin: true
 
 ---
 
+{: .prompt-danger }
+> **30 秒速览** — LiteLLM `1.82.7` / `1.82.8` 被植入后门，窃取云凭证、SSH 密钥、K8s 令牌。终端执行 `pip show litellm` 查看版本：**1.82.7 或 1.82.8 需立即处置**。安全版本：≤ 1.82.6。[→ 点击跳转自查](#你受影响了吗) \| [→ 应急处置](#中招了怎么办)
+
+---
+
+## 攻击链全景
+
+下图展示了从 Trivy 被入侵到 litellm 用户被攻击的完整链路：
+
+```mermaid
+flowchart LR
+    A["🔓 Trivy CI 漏洞<br/>(pull_request_target)"] -->|窃取 aqua-bot PAT| B["☠️ 毒化 Trivy v0.69.4"]
+    B -->|LiteLLM CI 未锁版本<br/>apt install 拉到毒化版| C["🏭 LiteLLM CI/CD"]
+    C -->|窃取 PYPI_PUBLISH_PASSWORD<br/>外传至 checkmarx.zone| D["📦 恶意 litellm<br/>1.82.7 / 1.82.8"]
+    D --> E["🔑 凭证收割<br/>50+ 敏感路径"]
+    D --> F["☸️ K8s 横向移动<br/>特权 Pod"]
+    D --> G["🔄 持久化后门<br/>sysmon.service"]
+    E -->|AES-256 + RSA-4096<br/>加密外传| H["💀 攻击者服务器<br/>models.litellm.cloud"]
+```
+
+---
+
 ## 事件概述
 
 **litellm** 是 Python 生态中最流行的 LLM 统一调用库——OpenAI、Anthropic、Google、AWS Bedrock 等几十个模型供应商，一套代码调用。据 Wiz 数据，litellm 存在于 **36% 的云环境**中，月下载量 **9500 万**。
@@ -25,22 +47,9 @@ pin: true
 
 ## 攻击链：从安全工具到 PyPI
 
-这次攻击的精妙之处在于它的入口——不是 LiteLLM 本身，而是它 CI/CD 中的安全扫描工具。
+这次攻击的精妙之处在于它的入口——不是 LiteLLM 本身，而是它 CI/CD 中的安全扫描工具 **Trivy**。攻击者利用 Trivy 的 `pull_request_target` workflow 漏洞窃取了 aqua-bot 的 PAT，发布了恶意 Trivy v0.69.4。LiteLLM 的 CI/CD 未锁定 Trivy 版本，`apt install` 拉到了毒化版本——Trivy 中的窃取器在 CI 环境内运行，提取了 `PYPI_PUBLISH_PASSWORD`，最终让 TeamPCP 直接往 PyPI 推送了恶意包。
 
-```
-Trivy CI 漏洞（pull_request_target workflow）
-    ↓ 窃取 aqua-bot PAT（Personal Access Token）
-    ↓ 发布恶意 Trivy v0.69.4
-    ↓
-LiteLLM CI/CD 未锁定版本，apt install 拉到了毒化的 Trivy
-    ↓ Trivy 中的窃取器在 CI 环境内运行
-    ↓ 提取 PYPI_PUBLISH_PASSWORD
-    ↓ 凭证外传至 checkmarx[.]zone
-    ↓
-TeamPCP 用窃取的凭证发布 litellm 1.82.7 / 1.82.8
-```
-
-**讽刺的是：用来保护供应链安全的工具（Trivy），反而成了供应链攻击的入口。**
+**讽刺的是：用来保护供应链安全的工具，反而成了供应链攻击的入口。**
 
 ## 恶意载荷：三阶段攻击
 
@@ -224,15 +233,20 @@ echo "另外请手动检查 GitHub 账号是否有 tpcp-docs 仓库。"
 
 以 [OfoxAI](https://ofox.ai/zh?utm_source=blog&utm_medium=post&utm_campaign=litellm_security) 为例：
 
-| 风险维度 | 自建 LiteLLM | OfoxAI 托管服务 |
-|----------|-------------|----------------|
-| **供应链攻击** | CI/CD 被投毒 → 你的所有 Key 被偷 | 托管服务，用户不接触 CI/CD 管线 |
-| **密钥存储** | `.env` 明文 / 自建 Vault | 平台侧加密管理，Key 不暴露给用户环境 |
-| **密钥集中风险** | 一个实例存十几家厂商 Key，攻破一个全丢 | 用户只持有一个 OfoxAI 接口凭证 |
-| **版本升级风险** | `pip install` 可能拉到恶意版本 | 无需在用户侧安装任何包 |
-| **安全响应** | 出事后自己排查 IoC、轮换密钥 | 平台统一应急响应 |
-| **调用监控** | 自建日志系统 | 内置调用日志和异常检测 |
-| **维护成本** | 持续跟进安全公告、打补丁、锁版本 | 零运维，开箱即用 |
+<table>
+<thead>
+<tr><th>风险维度</th><th style="background:#fff0f0;color:#c0392b;">自建 LiteLLM ⚠️</th><th style="background:#f0fff0;color:#27ae60;">OfoxAI 托管服务 ✅</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>供应链攻击</strong></td><td style="background:#fff5f5;">CI/CD 被投毒 → 所有 Key 被偷</td><td style="background:#f5fff5;">托管服务，用户不接触 CI/CD 管线</td></tr>
+<tr><td><strong>密钥存储</strong></td><td style="background:#fff5f5;">.env 明文 / 自建 Vault</td><td style="background:#f5fff5;">平台侧加密管理，Key 不暴露给用户环境</td></tr>
+<tr><td><strong>密钥集中风险</strong></td><td style="background:#fff5f5;">一个实例存十几家厂商 Key，攻破一个全丢</td><td style="background:#f5fff5;">用户只持有一个 OfoxAI 接口凭证</td></tr>
+<tr><td><strong>版本升级风险</strong></td><td style="background:#fff5f5;">pip install 可能拉到恶意版本</td><td style="background:#f5fff5;">无需在用户侧安装任何包</td></tr>
+<tr><td><strong>安全响应</strong></td><td style="background:#fff5f5;">出事后自己排查 IoC、轮换密钥</td><td style="background:#f5fff5;">平台统一应急响应</td></tr>
+<tr><td><strong>调用监控</strong></td><td style="background:#fff5f5;">自建日志系统</td><td style="background:#f5fff5;">内置调用日志和异常检测</td></tr>
+<tr><td><strong>维护成本</strong></td><td style="background:#fff5f5;">持续跟进安全公告、打补丁、锁版本</td><td style="background:#f5fff5;">零运维，开箱即用</td></tr>
+</tbody>
+</table>
 
 核心逻辑很简单：**你只需要一个 OfoxAI 接口凭证，就能直连 Claude、GPT、Gemini、DeepSeek、Qwen 等主流模型。模型厂商的原始 Key 由平台加密托管，不经过你的代码、你的 CI/CD、你的 `.env` 文件。** 即使某天 PyPI 上又出了恶意包，和你也没有关系——因为你根本不需要在自己的环境里安装任何 AI 代理。
 
