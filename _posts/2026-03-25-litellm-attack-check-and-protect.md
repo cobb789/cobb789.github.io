@@ -252,30 +252,9 @@ echo "另外请手动检查 GitHub 账号是否有 tpcp-docs 仓库。"
 
 ### 更安全的做法：托管服务
 
-比起在自己的环境里部署一个 API 代理（然后祈祷它不被投毒），更安全的思路是用托管的 AI 接口服务。
+比起自建 API 代理，更安全的思路是用托管的 AI 接口服务——用户只持有一个接口凭证，模型厂商的原始 Key 由平台加密托管，不经过你的代码、CI/CD 或 `.env` 文件。即使 PyPI 上又出了恶意包，和你也没关系。
 
-以 [OfoxAI](https://ofox.ai/zh?utm_source=blog&utm_medium=post&utm_campaign=litellm_security) 为例：
-
-<table>
-<thead>
-<tr><th>风险维度</th><th style="background:#fff0f0;color:#c0392b;">自建 LiteLLM ⚠️</th><th style="background:#f0fff0;color:#27ae60;">OfoxAI 托管服务 ✅</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>供应链攻击</strong></td><td style="background:#fff5f5;">CI/CD 被投毒 → 所有 Key 被偷</td><td style="background:#f5fff5;">托管服务，用户不接触 CI/CD 管线</td></tr>
-<tr><td><strong>密钥存储</strong></td><td style="background:#fff5f5;">.env 明文 / 自建 Vault</td><td style="background:#f5fff5;">平台侧加密管理，Key 不暴露给用户环境</td></tr>
-<tr><td><strong>密钥集中风险</strong></td><td style="background:#fff5f5;">一个实例存十几家厂商 Key，攻破一个全丢</td><td style="background:#f5fff5;">用户只持有一个 OfoxAI 接口凭证</td></tr>
-<tr><td><strong>版本升级风险</strong></td><td style="background:#fff5f5;">pip install 可能拉到恶意版本</td><td style="background:#f5fff5;">无需在用户侧安装任何包</td></tr>
-<tr><td><strong>安全响应</strong></td><td style="background:#fff5f5;">出事后自己排查 IoC、轮换密钥</td><td style="background:#f5fff5;">平台统一应急响应</td></tr>
-<tr><td><strong>调用监控</strong></td><td style="background:#fff5f5;">自建日志系统</td><td style="background:#f5fff5;">内置调用日志和异常检测</td></tr>
-<tr><td><strong>维护成本</strong></td><td style="background:#fff5f5;">持续跟进安全公告、打补丁、锁版本</td><td style="background:#f5fff5;">零运维，开箱即用</td></tr>
-</tbody>
-</table>
-
-核心逻辑很简单：**你只需要一个 OfoxAI 接口凭证，就能直连 Claude、GPT、Gemini、DeepSeek、Qwen 等主流模型。模型厂商的原始 Key 由平台加密托管，不经过你的代码、你的 CI/CD、你的 `.env` 文件。** 即使某天 PyPI 上又出了恶意包，和你也没有关系——因为你根本不需要在自己的环境里安装任何 AI 代理。
-
-> 用开源工具学习和实验没问题，但生产环境的 API 密钥管理，交给专业的托管服务更安全。这不是广告，这是这次供应链攻击给所有 AI 开发者的真实教训。
->
-> 👉 [ofox.ai](https://ofox.ai/zh?utm_source=blog&utm_medium=post&utm_campaign=litellm_security) — 一个接口，直连所有主流 AI 模型。
+比如 [OfoxAI](https://ofox.ai/zh?utm_source=blog&utm_medium=post&utm_campaign=litellm_security)，一个接口直连 Claude、GPT、Gemini、DeepSeek 等主流模型，零运维，不需要在自己环境里安装任何 AI 代理。
 
 ## 怎么防止下次再发生
 
