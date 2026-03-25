@@ -8,7 +8,7 @@ tags: [AI, security, supply-chain, LiteLLM, PyPI, DevSecOps]
 pin: true
 ---
 
-> 你可能没听说过 litellm，但如果你用过 LangChain、AutoGen、CrewAI、Dify、FastGPT、LobeChat 或任何需要调用多个大模型的框架——你的项目大概率间接依赖了它。2026 年 3 月 24 日，这个月下载量 9500 万、存在于 36% 云环境的包被植入了后门。
+> LiteLLM 主要被两类人直接使用：自建 AI 网关的开发团队，和用 Dify 等低代码平台的用户。但它覆盖 36% 云环境的原因是——大量公司在 CI/CD 和服务端用它做模型调用的统一层，普通用户看不到，但一旦出事，整条链路上的密钥全部暴露。2026 年 3 月 24 日，这个月下载量 9500 万的包被植入了后门。
 
 ---
 
@@ -18,27 +18,25 @@ pin: true
 
 ### 谁在用 litellm？
 
-LiteLLM 是个开发者工具，但大量"普通用户"在不知不觉中用到了它：
-
-**直接用到的：**
+**直接使用的：**
 
 | 场景 | 用户画像 | 怎么用到的 |
 |------|---------|-----------|
-| Cursor / Windsurf 自定义模型 | 程序员 | 配置 LiteLLM 做代理，用便宜模型替代官方模型 |
-| Open WebUI / LobeChat | AI 爱好者 | 本地部署聊天界面，LiteLLM 做后端统一调模型 |
-| Dify / FastGPT | 低代码玩家 | 这类平台底层或插件依赖 LiteLLM |
-| 自建 API 中转 | 省钱党 | 买了多家 Key，用 LiteLLM 做负载均衡和 fallback |
-| 公司内部 AI 网关 | 中小团队 | 老板说搭个内部 ChatGPT，用 LiteLLM 一键搞定 |
+| 自建 API 中转/网关 | 开发团队 | 用 LiteLLM Proxy 统一管理多家模型 Key，做负载均衡和 fallback |
+| 公司内部 AI 平台 | 中小团队 | 用 LiteLLM 一键搭建内部 ChatGPT，对接多个模型供应商 |
+| Dify 低代码平台 | 低代码玩家 | Dify 硬依赖 litellm 做底层模型调用 |
 
-**间接用到的（自己不知道）：**
+**间接存在于你的环境（你可能不知道）：**
 
 | 场景 | 说明 |
 |------|------|
-| pip install 了某个 AI 工具 | 很多 AI 项目把 litellm 作为依赖，装了别的包间接装上 |
-| Docker 跑了别人的 AI 项目 | docker-compose 里带了 litellm 容器 |
-| 用了公司/团队搭的 AI 服务 | 后端是 LiteLLM，前端用户完全不知道 |
+| CI/CD 构建管线 | 每次构建 pip install，litellm 作为依赖被拉入 |
+| Docker 镜像 | 很多 AI 项目的 docker-compose 里带了 litellm 容器 |
+| 公司/团队搭的 AI 服务 | 后端是 LiteLLM，前端用户完全不知道 |
 
-**如果你不确定自己用没用，跑一下 `pip show litellm`——你可能会惊讶地发现它就在你的环境里。**
+9500 万月下载量里，很大一部分来自 CI/CD 管线重复构建、Docker 镜像拉取和 PyPI 镜像同步——但这恰恰说明 litellm 在基础设施层面的渗透有多深。
+
+**如果你不确定自己用没用，跑一下 `pip show litellm` 看看。**
 
 ---
 
