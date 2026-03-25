@@ -18,12 +18,25 @@ pin: true
 
 ### 谁在用 litellm？
 
-不只是直接 `pip install litellm` 的人。以下项目和框架都直接或间接依赖 litellm：
+LiteLLM 是个开发者工具，但大量"普通用户"在不知不觉中用到了它：
 
-- **AI Agent 框架**：LangChain、AutoGen、CrewAI、MetaGPT、OpenHands
-- **LLM 应用平台**：Dify、FastGPT、LobeChat、Flowise
-- **MCP Server / LLM 编排工具**：很多内部工具通过 litellm 做多模型路由
-- **任何使用 litellm 作为 API 代理的团队**：litellm proxy 是最流行的自建 LLM gateway
+**直接用到的：**
+
+| 场景 | 用户画像 | 怎么用到的 |
+|------|---------|-----------|
+| Cursor / Windsurf 自定义模型 | 程序员 | 配置 LiteLLM 做代理，用便宜模型替代官方模型 |
+| Open WebUI / LobeChat | AI 爱好者 | 本地部署聊天界面，LiteLLM 做后端统一调模型 |
+| Dify / FastGPT | 低代码玩家 | 这类平台底层或插件依赖 LiteLLM |
+| 自建 API 中转 | 省钱党 | 买了多家 Key，用 LiteLLM 做负载均衡和 fallback |
+| 公司内部 AI 网关 | 中小团队 | 老板说搭个内部 ChatGPT，用 LiteLLM 一键搞定 |
+
+**间接用到的（自己不知道）：**
+
+| 场景 | 说明 |
+|------|------|
+| pip install 了某个 AI 工具 | 很多 AI 项目把 litellm 作为依赖，装了别的包间接装上 |
+| Docker 跑了别人的 AI 项目 | docker-compose 里带了 litellm 容器 |
+| 用了公司/团队搭的 AI 服务 | 后端是 LiteLLM，前端用户完全不知道 |
 
 **如果你不确定自己用没用，跑一下 `pip show litellm`——你可能会惊讶地发现它就在你的环境里。**
 
