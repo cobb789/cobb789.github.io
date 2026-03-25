@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "LiteLLM 供应链投毒全解析：自查手册 + 防护指南"
+title: "用 Claude/GPT/Gemini 的注意了：LiteLLM 被投毒，你可能不知道自己在用它"
 date: 2026-03-25 16:00:00 +0800
 author: Cobb
 categories: [AI, Dev]
@@ -8,13 +8,24 @@ tags: [AI, security, supply-chain, LiteLLM, PyPI, DevSecOps]
 pin: true
 ---
 
-> 2026 年 3 月 24 日，月下载量 9500 万的 litellm 被植入后门，恶意版本存活约 3 小时。如果你的项目直接或间接依赖它，这篇文章帮你判断是否受影响，以及怎么保护自己。
+> 你可能没听说过 litellm，但如果你用过 LangChain、AutoGen、CrewAI、Dify、FastGPT、LobeChat 或任何需要调用多个大模型的框架——你的项目大概率间接依赖了它。2026 年 3 月 24 日，这个月下载量 9500 万、存在于 36% 云环境的包被植入了后门。
 
 ---
 
 {: .prompt-info }
 > **30 秒速览** — LiteLLM `1.82.7` / `1.82.8` 被植入后门，窃取云凭证、SSH 密钥、K8s 令牌。终端执行 `pip show litellm` 查看版本，`1.82.7` 或 `1.82.8` 需立即处置。安全版本：≤ `1.82.6`。
 > [↓ 自查章节](#你受影响了吗) \| [↓ 应急处置](#中招了怎么办)
+
+### 谁在用 litellm？
+
+不只是直接 `pip install litellm` 的人。以下项目和框架都直接或间接依赖 litellm：
+
+- **AI Agent 框架**：LangChain、AutoGen、CrewAI、MetaGPT、OpenHands
+- **LLM 应用平台**：Dify、FastGPT、LobeChat、Flowise
+- **MCP Server / LLM 编排工具**：很多内部工具通过 litellm 做多模型路由
+- **任何使用 litellm 作为 API 代理的团队**：litellm proxy 是最流行的自建 LLM gateway
+
+**如果你不确定自己用没用，跑一下 `pip show litellm`——你可能会惊讶地发现它就在你的环境里。**
 
 ---
 
