@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "用 Claude/GPT/Gemini 的注意了：LiteLLM 被投毒，你可能不知道自己在用它"
+title: "用 AI 的注意了：LiteLLM 被投毒，你可能不知道自己在用它"
 date: 2026-03-25 16:00:00 +0800
 author: Cobb
 categories: [AI, Dev]
