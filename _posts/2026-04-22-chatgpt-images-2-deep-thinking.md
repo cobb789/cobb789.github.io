@@ -37,14 +37,7 @@ Images 2.0 引入了付费开放的"深度思考"（Deep Thinking）机制，重
 
 ## API 定价
 
-Images 2.0 的底层模型是 `gpt-image-2`，API 定价如下（OpenAI 官方定价页）：
-
-| 类型 | 输入 | 缓存输入 | 输出 |
-|------|------|---------|------|
-| 图像 | $8.00/1M tokens | $2.00/1M tokens | $30.00/1M tokens |
-| 文本 | $5.00/1M tokens | $1.25/1M tokens | $10.00/1M tokens |
-
-缓存输入价格只有原价的 25%，对于批量生成同一风格图片的场景非常友好。
+Images 2.0 的底层模型是 `gpt-image-2`，已在 OpenAI API 上线。具体定价请参考 [OpenAI 官方定价页](https://openai.com/api/pricing/)。
 
 ## 战略意义
 
